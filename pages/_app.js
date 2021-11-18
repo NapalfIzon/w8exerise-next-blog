@@ -26,7 +26,7 @@ export default function MyApp({ Component, pageProps }) {
   const changeData = (event) => {
     setValue({ ...value, [event.target.id]: event.target.value });
   };
-  console.log("caca de la vaca");
+
   return (
     <>
       <Header isLocalStorage={isLocalStorage} />
