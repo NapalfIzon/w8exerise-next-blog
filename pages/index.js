@@ -1,13 +1,17 @@
 import Head from "next/head";
-import styles from "./index.module.css";
 
-const Home = () => (
-  <div className={styles.container}>
-    <Head>
-      <title>Mi blog</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-  </div>
-);
+const Home = () => {
+  return (
+    <>
+      <Head>
+        <title>Mi blog</title>
+        <link
+          rel="icon"
+          href="https://next-tuitah-front.vercel.app/favicon.png"
+        />
+      </Head>
+    </>
+  );
+};
 
 export default Home;
