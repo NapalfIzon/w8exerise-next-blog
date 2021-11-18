@@ -9,6 +9,7 @@ import "../styles/global.css";
 export default function MyApp({ Component, pageProps }) {
   const [isLocalStorage, setIsLocalStorage] = useState(null);
   const [value, setValue] = useState({
+    userId: uuid(),
     userName: "",
     userAvatar: "",
   });

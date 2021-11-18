@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AddNotePage = () => {
+  const [localStorageData, setLocalStorageData] = useState({
+    userId: "",
+    userName: "",
+    userAvatar: "",
+  });
   const [newPost, SetNewPost] = useState({
     title: "",
     body: "",
@@ -15,6 +20,9 @@ const AddNotePage = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    const finalPost = { ...newPost, ...localStorageData };
+
     const response = await fetch(
       "https://isdi-blog-posts-api.herokuapp.com/posts",
       {
@@ -22,11 +30,15 @@ const AddNotePage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newPost),
+        body: JSON.stringify(finalPost),
       }
     );
     await response.json();
   };
+
+  useEffect(() => {
+    setLocalStorageData(JSON.parse(localStorage.getItem("blog-auth")));
+  }, []);
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
